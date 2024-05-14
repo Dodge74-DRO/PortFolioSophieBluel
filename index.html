@@ -1,61 +1,114 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/index.js" defer></script>
 	<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<a href="#portfolio">
-				<li>projets</li>
+	<aside id="modal-admin" class="modal-admin js-modal-admin-close" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title-modal-admin" style="display:none">
+		<div class="modal-admin-wrapper js-modal-admin-stop">
+			<h3 id="title-modal-admin">Galerie photo</h3>
+			<a href="" class="modal-admin-close js-modal-admin-close">
+				<i class="fa-solid fa-xmark"></i>
 			</a>
-			<a href="#contact">
-				<li>contact</li>
-			</a>
-			<a href="./login.html" class="btn_login logout_show">
-				<li>login</li>
-			</a>
-			<a href="./login.html" class="btn_logout login_show">
-				<li>logout</li>
-			</a>
-			<a href="https://www.instagram.com" target="_blank">
-				<li><img src="./assets/icons/instagram.png" alt="Instagram" class="instagram"></li>
-			</a>
-		</ul>
-	</nav>
-</header>
-<main>
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-		</figure>
-		<article>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<section id="portfolio">
-		<div class="portfolio__title">
-			<h2>Mes Projets</h2>
+			<div class="modal-admin-gallery">
+				<!-- generation des photos dynamiquement -->
+			</div>
+			<div class="line-grey"></div>
+			<a href="#modal-add-work" class="modal-admin-btn-add-projet js-modal-add-work">Ajouter un projet</a>
 		</div>
-		<div class="filters logout_show">
-			<button class="filter__btn logout_show filter__btn--active">Tous</button>
+	</aside>
+	<aside id="modal-add-work" class="modal-add-work js-modal-add-work-close" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="title-modal-add-work" style="display:none">
+		<div class="modal-add-work-wrapper js-modal-add-work-stop">
+			<i class="fa-solid fa-arrow-left modal-return-admin js-modal-return-admin"></i>
+			<i class="fa-solid fa-xmark modal-add-work-close js-modal-add-work-close"></i>
+			<h3 id="title-modal-add-work">Ajout photo</h3>
+			<form id="form_add_picture">
+					<button class="contain_add_picture">
+						<i class="fa-regular fa-image"></i>
+						<input type="file" id="picture" class="file-upload" name="picture" accept="image/png, image/jpeg">
+						<img src="" alt="" id="preview">
+						<p class="btn_add_picture">+ Ajout photo</p>
+						<p class="formats_accepted">jpg, png: 4mo max</p>
+					</button>
+					<label id="label_title_add" for="title_add_img">Titre</label>
+					<input type="text" id="title_add_img" name="title_add_img" required>
+					<label id="label_categories" for="categories_add">Catégorie</label>
+					<select name="categories_add" id="categories_add" required>
+						<option></option>
+					</select>
+					<div class="line__modale2"></div>
+					<input type="submit" value="Valider" class="btn__modale__add">
+			</form>
+<!--			<div class="line__modale1"></div>
+			<button class="btn__modale">Ajouter une photo</button>-->
+		</aside>
+	<header>
+		<div class="top_page_admin admin_show">
+			<i class="fa-solid fa-pen-to-square"></i>
+			<p>Mode édition</p>
 		</div>
-		<div class="gallery">
-<!--		<figure>
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<a href="#portfolio">
+					<li>projets</li>
+				</a>
+				<a href="#contact">
+					<li>contact</li>
+				</a>
+				<a href="./login.html" class="btn_login admin_hide">
+					<li>login</li>
+				</a>
+				<a href="./login.html" class="btn_logout admin_show">
+					<li>logout</li>
+				</a>
+				<a href="https://www.instagram.com" target="_blank">
+					<li><img src="./assets/icons/instagram.png" alt="Instagram" class="instagram"></li>
+				</a>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="">
+			</figure>
+			<article>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison
+					finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
+					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+					chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
+					décorateur(trice)</p>
+			</article>
+		</section>
+		<section id="portfolio">
+			<div class="portfolio__title">
+				<h2>Mes Projets</h2>
+				<div class="btn_index_admin admin-show">
+					<i class="fa-solid fa-pen-to-square admin_show"></i>
+   					<a href="#modal-admin" class="js-modal-admin btn_index_admin admin_show">modifier</a>
+				</div>
+			</div>
+			<div class="filters admin_hide">
+				<button class="filter__btn admin_hide filter__btn--active">Tous</button>
+			</div>
+			<div class="gallery">
+				<!--		<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 				<figcaption>Abajour Tahina</figcaption>
 			</figure>
@@ -99,29 +152,30 @@
 				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
 				<figcaption>Hotel First Arte - New Delhi</figcaption>
 			</figure>-->
-		</div>
-	</section>
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
+			</div>
+		</section>
+		<section id="contact">
+			<h2>Contact</h2>
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+				<input type="submit" value="Envoyer">
+			</form>
+		</section>
+	</main>
 
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
 </body>
+
 </html>
