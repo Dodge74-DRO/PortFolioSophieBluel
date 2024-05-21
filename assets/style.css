@@ -223,10 +223,7 @@ li:hover {
 }
 
 .gallery img {
-	width: 366.67px;
-	object-fit: cover;
-	height: 490.89px;
-/**	width: 100%;**/
+	width: 100%;
 }
 
 #contact {
@@ -480,7 +477,8 @@ footer nav ul {
 
 #btn_hover_choose_image {
 	position: absolute;
-	top: 298px;
+/**	top: 298px;**/
+	top:81px;
 	border: 1px solid #CBD6DC;
 	width: 173px;
 	height: 36px;

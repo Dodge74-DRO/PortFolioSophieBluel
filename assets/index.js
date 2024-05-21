@@ -15,7 +15,7 @@ var SelectedPicture = false
 //
 // EST-ON CONNECTE EN TANT QU'ADMINISTRATEUR (cacher ou afficher éléments HTML selon login/logout)
 //
-const token = localStorage.getItem("Token")
+const token = localStorage.getItem("token")
 if (token !== null && token !== undefined) {
         AdminConnected = true;
         document.querySelectorAll(".admin_show").forEach((element) => {element.classList.remove('login_logout_hide')});
@@ -236,7 +236,7 @@ const stopPropagation = function (e) {
 };
 
 // VISULALISATION DE LA PHOTO CHOISIE
-document.querySelectorAll(".mouse_over_pic").forEach((a) => {
+document.querySelectorAll(".mouse_over_out_pic").forEach((a) => {
     a.addEventListener('mouseover',MouseOverPic);
     a.addEventListener('mouseout',MouseOutPic);
 });

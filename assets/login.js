@@ -8,9 +8,9 @@ console.log(email, password, submit)
 // vérifier si User déjà connecté ********************/
 alreadyLogged();
 function alreadyLogged() {
-    if (localStorage.getItem("Token")) {
-        console.log("Token", localStorage.getItem("Token"));
-        localStorage.removeItem("Token");
+    if (localStorage.getItem("token")) {
+        console.log("token", localStorage.getItem("token"));
+        localStorage.removeItem("token");
         const p = document.createElement("p");
         p.innerHTML = "<br><br>Vous avez été déconnecté(e), reconnectez vous<br>ou retour ou fermer la page";
         loginEmailError.innerHTML = " ";
@@ -70,7 +70,7 @@ function LoginUser(UserParam) {
             } 
             if (result.token) {
                 // enregistrer le jeton retourner par le serveur pour les transactions
-                localStorage.setItem("Token", result.token);
+                localStorage.setItem("token", result.token);
                 // retourner sur la page d'accueil
                 window.location.href = "index.html";
             }
