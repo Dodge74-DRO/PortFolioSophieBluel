@@ -338,14 +338,14 @@ footer nav ul {
 	max-width: calc(98vh - 20px);
 	max-height: calc(98vh - 20px);
 	width: 675px;
-	padding: 30px;
+	padding: 0px 0px 0px 0px;
 	background-color: white;
 	animation: slideFromTop 0.2s both;
 	border-radius: 10px;
 }
 
-.js-modal1-close,
-.js-modal2-close {
+.js-modalGallery-close,
+.js-modalCreate-close {
 	font-size: 24px;
 /**	display: flex;
 	justify-content: flex-end;
@@ -356,8 +356,8 @@ footer nav ul {
 }
 
 
-.modal1 h3,
-.modal2 h3 {
+.modalGallery h3,
+.modalCreate h3 {
 	font-family: 'Work Sans';
 	font-weight:400;
 	font-size: 26px;
@@ -368,24 +368,35 @@ footer nav ul {
 
 .modal-admin-gallery {
 	width: 80%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+	margin-left: 10%;
+
+/**	width: 80%;
 	margin: 0 10% 0 10%;
 	display: flex;
 	align-items: center;
 	justify-content:baseline ;
 	flex-wrap: wrap;
-	gap:2%;
+	gap:2%;**/
+}
+.modal-admin-gallery figure{
+	position: relative;
 }
 
 .modal-admin-gallery img{
-	width: 98px;
+	width: 100%;
+/**	width: 96px;
 	height: 130.77px;
-	object-fit: cover;
+	object-fit: cover;**/
 }
 
 .fa-trash-can {
-	position: relative;
-	bottom: 125px;
-	left: 68px;;
+	position: absolute;
+	top: 2%;
+	right: 3%;
 	color: white;
 	background-color: black;
 	padding: 5px;
@@ -399,11 +410,11 @@ footer nav ul {
 .line-grey {
 	border: 1px solid #b3b3b3;
 	width: 80%;
-	margin: 38px 0;
+	margin: 0 10% 38px 10%;
 }
  
 /***********************************************************/  
-.js-modal1-return {
+.js-modalGallery-return {
 	font-size: 24px;
 	position: absolute;
 	top: 30px;
@@ -477,7 +488,8 @@ footer nav ul {
 
 #btn_hover_choose_image {
 	position: absolute;
-/**	top: 298px;**/
+ /** si btn hors contain_add_picture **/
+	/**	top: 298px;**/
 	top:81px;
 	border: 1px solid #CBD6DC;
 	width: 173px;
