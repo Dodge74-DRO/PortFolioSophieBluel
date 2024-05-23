@@ -19,17 +19,16 @@
 	<aside id="modal-admin" class="modal-admin js-modal-admin-close" aria-hidden="true" role="dialog" aria-modal="false"
 		aria-labelledby="title-modal-admin" style="display:none">
 		<div class="modal-admin-wrapper js-modal-admin-stop">
-			<section id="modalGallery" class="modalGallery" aria-hidden="true"  style="display:none">
+			<div id="modalGallery" class="modalGallery" aria-hidden="true"  style="display:none">
 				<h3 id="title-modal-admin">Galerie photo</h3>
 				<i class="fa-solid fa-xmark modal-add-work-close js-modalGallery-close"></i>
 				<section class="modal-admin-gallery">
 					<!-- generation des photos dynamiquement -->
 				</section>
 				<div class="line-grey"></div>
-				<a href="#modal-add-work" class="js-modal-add-work btn_modal" id="btn_modal_goto_add_work">Ajouter un
-					projet</a>
-			</section>
-			<section id="modalCreate" class="modalCreate"  aria-hidden="true" style="display:none">
+				<a href="#modal-add-work" class="js-modal-add-work btn_modal" id="btn_modal_goto_add_work">Ajouter un projet</a>
+			</div>
+			<div id="modalCreate" class="modalCreate"  aria-hidden="true" style="display:none">
 				<i class="fa-solid fa-arrow-left js-modalGallery-return"></i>
 				<i class="fa-solid fa-xmark modal-add-work-close js-modalCreate-close"></i>
 				<h3 id="title-modal-add-work">Ajout photo</h3>
@@ -41,8 +40,8 @@
 							<img src="" alt="" id="preview-img" class="mouse_over_pic">
 							<p class="btn_add_picture">+ Ajout photo</p>
 							<p class="formats_accepted">jpg, png: 4mo max</p>
-							<p id="btn_hover_choose_image" class="mouse_over_out_pic">Choose image</p>
 						</button>
+						<p id="btn_hover_choose_image" class="mouse_over_out_pic">Choose image</p>
 					</div>
 					<label id="label_title_add" for="title_add_img">Titre</label>
 					<input type="text" id="title_add_img" name="title_add_img" required>
@@ -53,7 +52,7 @@
 					<div class="line__modale2"></div>
 					<input type="submit" value="Valider" class=" btn_modal" id="btn_modal_add_work">
 				</form>
-			</section>
+			</div>
 		</div>
 	</aside>
 	<header>

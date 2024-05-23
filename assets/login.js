@@ -1,4 +1,4 @@
-const ApiUrl = "http://localhost:5678/api/";
+const apiUrl = "http://localhost:5678/api/";
 const email = document.getElementById("btn_email");
 const password = document.getElementById("btn_password");
 const submit = document.getElementById("btn_submit");
@@ -9,7 +9,6 @@ console.log(email, password, submit)
 alreadyLogged();
 function alreadyLogged() {
     if (localStorage.getItem("token")) {
-        console.log("token", localStorage.getItem("token"));
         localStorage.removeItem("token");
         const p = document.createElement("p");
         p.innerHTML = "<br><br>Vous avez été déconnecté(e), reconnectez vous<br>ou retour ou fermer la page";
@@ -21,45 +20,40 @@ function alreadyLogged() {
 // ***************************************************/
 // Au clic, on envoie les valeurs de connexion *******/
 btn_submit.addEventListener("click", () => {
-    console.log(email.value, password.value)
-    let UserParam = {
+    let userParam = {
         email: email.value,
         password: password.value
     };
-    LoginUser(UserParam);
+    LoginUser(userParam);
 });
 // ***************************************************/
 // vérification email et psw + envoi serveur *********/
-function LoginUser(UserParam) {
-    console.log(UserParam);
+function LoginUser(userParam) {
     // mettre à blanc zone erreur mail psw
     loginEmailError.innerHTML = " ";
     loginMdpError.innerHTML = " ";
     // vérifier user email
-    console.log(UserParam.email)
-    if (!UserParam.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/g)) {
+    if (!userParam.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/g)) {
         const p = document.createElement("p");
         p.innerHTML = "<br><br>adresse email invalide";
         loginEmailError.appendChild(p);
         return;
     }
     // vérifier user password
-    console.log(UserParam.password, UserParam.password.length)
-    if (!UserParam.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/g)) {
+    if (!userParam.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/g)) {
         const p = document.createElement("p");
         p.innerHTML = "<br><br>le mot de passe doit contenir : 6 caractères mini<br> au moins 1 majuscule, 1 minuscule et 1 chiffre";
         loginMdpError.appendChild(p);
         return;
     }
     // on est OK pour l'envoi des données et recevoir le token du serveur    
-    fetch('http://localhost:5678/api/users/login', {
+    fetch(apiUrl+'users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json;charset=utf-8' },
-        body: JSON.stringify(UserParam)
+        body: JSON.stringify(userParam)
     })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             // Si couple email/mdp incorrect
             if (result.error || result.message) {
                 const p = document.createElement("p");

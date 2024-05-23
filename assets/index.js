@@ -291,6 +291,14 @@ titleFormAddWork.addEventListener("input", validateAddWork)
 pictureFormAddWork.addEventListener("change", validateAddWork)
 categoryFormAddWork.addEventListener("change", validateAddWork)
 
+// test si format PHOTO OK ?
+function checkFile(file) {
+    const allowedTypes = ['image/jpeg', 'image/png']
+    const maxSize = 4 * 1024 * 1024; // 4 Mo en octets
+    // Vérification du type de fichier
+    return (allowedTypes.includes(file.type) && file.size < maxSize) 
+};
+
 // TESTS SI éléments du PROJET tous OK ? (titre photo catégorie)
 function validateAddWork() {
     // Verification du contenue présent ou non dans les différentes sections du formulaire.
@@ -308,13 +316,6 @@ function validateAddWork() {
         btnFormAddWork.style.borderColor = "#7A7A7A";
         modalAddWork_OK = false;
     };
-};
-// test si format PHOTO OK ?
-function checkFile(file) {
-    const allowedTypes = ['image/jpeg', 'image/png']
-    const maxSize = 4 * 1024 * 1024; // 4 Mo en octets
-    // Vérification du type de fichier
-    return (allowedTypes.includes(file.type) && file.size < maxSize) 
 };
 //
 // AJOUT DU PROJET SUITE A SUBMIT
@@ -364,7 +365,7 @@ const deleteWork = async function (evenement) {
     Work_Id = evenement.target.dataset.idWork
     // supprimer le projets de la BD
     try {
-        await fetch(`http://localhost:5678/api/works/${Work_Id}`, {
+        await fetch(apiUrl + `works/${Work_Id}`, {
             method: "DELETE",
             headers: {"Authorization": `Bearer ${token}`
             }
