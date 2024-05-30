@@ -8,7 +8,7 @@ var modalAddWork_OK = false
 let modalAdmin = null
 let modalGallery  = null
 let modalCreate  = null
-// ADMIN or GUEST ?
+// ADMIN or GUEST ? récupérer TOKEN si logué
 // cacher ou afficher les éléments HTML selon ADMIN/GUEST
 const token = localStorage.getItem("token")
 if (token !== null && token !== undefined) {
@@ -26,12 +26,11 @@ if (token !== null && token !== undefined) {
 // GESTION DES CATEGORIES
 //
 // récupération des catégories via API
-// GUEST : afficher filtres catégories des projets + listeners
-// ADMIN : créer liste catégories pour choix ajout projet
 async function btnFilters() {
     try {
         const response = await fetch(apiUrl + "categories");
         listCategories = await response.json();
+// GUEST : afficher filtres catégories des projets + listeners
         if (ifAdminConnected === false) {
             const filters = document.querySelector(".filters");
             for (let ibtn = 0; ibtn < listCategories.length; ibtn++) {
@@ -53,6 +52,7 @@ async function btnFilters() {
                     };
                 });
             }
+// ADMIN : créer liste catégories pour choix ajout projet
         } else {
             const categoriesAdd = document.querySelector("#choice_categorie")
             listCategories.forEach(category => {
@@ -121,6 +121,7 @@ function createHtmlWork(htmlGallery,htmlModalAdminGallery,Work) {
         let figureModal_Delete = document.createElement("p");
         let figureModal_DeleteIcon = document.createElement("i");
         figureModal_DeleteIcon.classList = "fa-solid fa-trash-can js-delete-work"; 
+    // important indiqué l'ID du projet sur logo corbeille pour DELETEWORK 
         figureModal_DeleteIcon.dataset.idWork = Work.id;
         figureModal_DeleteIcon.addEventListener("click", deleteWork)
         figureModal_Delete.appendChild(figureModal_DeleteIcon);
@@ -361,11 +362,9 @@ formulaireAddWork.addEventListener("submit", async (event) =>{
 //
 const deleteWork = async function (evenement) {
     evenement.preventDefault();
-    // récupérer l'ID du projet à supprimer
-    Work_Id = evenement.target.dataset.idWork
     // supprimer le projets de la BD
     try {
-        await fetch(apiUrl + `works/${Work_Id}`, {
+        await fetch(apiUrl + `works/${evenement.target.dataset.idWork}`, {
             method: "DELETE",
             headers: {"Authorization": `Bearer ${token}`
             }

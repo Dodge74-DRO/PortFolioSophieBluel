@@ -491,9 +491,9 @@ footer nav ul {
 #btn_hover_choose_image {
 	position: absolute;
  /** si btn hors contain_add_picture **/
-	top: 251px;
+	/**top: 251px;**/
  /** si btn dans contain_add_picture **/
-	/**	 top:81px;**/
+	top: 201px;
 	border: 1px solid #CBD6DC;
 	width: 173px;
 	height: 36px;

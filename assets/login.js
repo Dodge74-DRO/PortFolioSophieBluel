@@ -4,7 +4,6 @@ const password = document.getElementById("btn_password");
 const submit = document.getElementById("btn_submit");
 const loginEmailError = document.querySelector(".ErLoginEmail");
 const loginMdpError = document.querySelector(".ErLoginMdp");
-console.log(email, password, submit)
 // vérifier si User déjà connecté ********************/
 alreadyLogged();
 function alreadyLogged() {
