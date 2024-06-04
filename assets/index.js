@@ -15,18 +15,18 @@ if (token !== null && token !== undefined) {
         ifAdminConnected = true;
         document.querySelectorAll(".admin_show").forEach((element) => {element.classList.remove('login_logout_hide')});
         document.querySelectorAll(".admin_hide").forEach((element) => {element.classList.add('login_logout_hide');});
-        btnFilters();
+        categories();
     } else {
         ifAdminConnected = false;
         document.querySelectorAll(".admin_show").forEach((element) => {element.classList.add('login_logout_hide');});
         document.querySelectorAll(".admin_hide").forEach((element) => {element.classList.remove('login_logout_hide');});
-        btnFilters();
+        categories();
     };
 //
 // GESTION DES CATEGORIES
 //
 // récupération des catégories via API
-async function btnFilters() {
+async function categories() {
     try {
         const response = await fetch(apiUrl + "categories");
         listCategories = await response.json();
